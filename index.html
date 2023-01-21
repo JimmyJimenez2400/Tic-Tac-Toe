@@ -12,23 +12,40 @@
 </head>
 
 <body>
-    <div class="gameContainer">
-        <header class="title">
+    <div class="gameContainer" id="gameContainer">
+        <header class="title" id="title">
             <h1>Tic Tac Toe</h1>
-            <h4>by Jimmy Jimenez</h4>
         </header>
-        <main class="main-content">
-            <div class="scores">
-                
-            </div>
-            <div class="gameBoard">
-
-            </div>
-            <div class="displayWinningMessage">
-
-            </div>
+        <main class="main-content" id="main-content">
+            <section class="scores">
+                <p class="score player1">Player 1 Score: </p>
+                <p class="score player2">Player 2 Score: </p>
+            </section>
+            <section class="gameBoard" id="gameBoard">
+                <div class="row">
+                    <button class="square" type="button">1</button>
+                    <button class="square" type="button">2</button>
+                    <button class="square" type="button">3</button>
+                </div>
+                <div class="row">
+                    <button class="square" type="button">1</button>
+                    <button class="square" type="button">2</button>
+                    <button class="square" type="button">3</button>
+                </div>
+                <div class="row">
+                    <button class="square" type="button">1</button>
+                    <button class="square" type="button">2</button>
+                    <button class="square" type="button">3</button>
+                </div>
+            </section>
+            <section class="displayWinningMessage" id="displayWinningMessage">
+                <section class="text">Sample</section>
+                <button id="restartButton">Play Again?</button>
+            </section>
         </main>
-        <footer class="footer"></footer>
+        <footer class="footer">
+            <h2>Made by Jimmy Jimenez</h2>
+        </footer>
     </div>
 </body>
 
