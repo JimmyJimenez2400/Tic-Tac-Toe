@@ -16,7 +16,7 @@ const Players = (name, score, marker) => {
 
 
 const GameBoard = (function GameBoard() {
-  const boardArray = ["X", "O", null, null, null, null, "O", null, null];
+  const boardArray = [null, null, null, null, null, null, null, null, null];
 
   const getBoard = () => boardArray;
 
@@ -64,13 +64,23 @@ const Game = (() => {
     console.log(`${getActivePlayer().name}'s turn`);
   }
 
-  const playRound = (e) => {
-    let playerInput = e.currentTarget.dataset.number;
-    if ("XO".includes(e.currentTarget.textContent)) return;
-    placeMarker(playerInput, getActivePlayer().marker);
-    e.currentTarget.textContent = getActivePlayer().marker;
-    _switchPlayerTurn();
+  // const playRound = (e) => {
+  //   let playerInput = e.currentTarget.dataset.number;
+  //   if ("XO".includes(e.currentTarget.textContent)) return;
+  //   placeMarker(playerInput, getActivePlayer().marker);
+  //   e.currentTarget.textContent = getActivePlayer().marker;
+  //   _switchPlayerTurn();
 
+  //   printNewRound();
+  // }
+  let count = 0;
+
+  const playRound = (e) => {
+    const letter = count++ % 2 == 0 ? "O" : "X";
+    e.target.textContent = letter;
+    console.log(`Turn ${count} complete`);
+
+    _switchPlayerTurn();
     printNewRound();
   }
 
@@ -88,6 +98,10 @@ const ScreenController = (function ScreenController() {
   } = Game;
   const board = document.querySelectorAll('.square');
   board.forEach(element => {
-    element.addEventListener('click', playRound);
+    const callback = (e) => {
+      playRound(e);
+      element.removeEventListener('click', callback);
+    }
+    element.addEventListener('click', callback);
   })
 })();
