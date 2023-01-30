@@ -65,15 +65,13 @@ const Game = (() => {
   }
 
   const playRound = (e) => {
-    let playerInput = e.currentTarget.dataset.number
+    let playerInput = e.currentTarget.dataset.number;
+    if ("XO".includes(e.currentTarget.textContent)) return;
     placeMarker(playerInput, getActivePlayer().marker);
     e.currentTarget.textContent = getActivePlayer().marker;
     _switchPlayerTurn();
 
     printNewRound();
-    console.log(`${board}`);
-    console.log(typeof board);
-    console.log(GameBoard.getBoard());
   }
 
   printNewRound();
